@@ -4,15 +4,13 @@
 		<meta charset="utf-8">
 		<meta httpequiv="XUACompatible" content="IE=edge">
 
-		<meta name="viewport" content="width=device-width, initial-
-		scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<title>Laravel 5</title>
 		<link href="{{asset('css')}}/app.css" rel="stylesheet">
-
-		<link href="/assets/css/material-design/bootstrap-material-design.css" rel="stylesheet" />
-		<link href="/assets/css/material-design/ripples.css"rel="stylesheet" />
-		<link href="/assets/css/custom/layout.css" rel="stylesheet" />
+		<link href="{{asset('css')}}/helper.css" rel="stylesheet">
+		<link href="{{asset('css')}}/pe-icon-7-stroke.css" rel="stylesheet">
+		<link href="{{asset('css')}}/style.css" rel="stylesheet">
 	</head>
 	<body>
 		@include('shared.head_nav')
@@ -39,7 +37,7 @@
 						@yield("content")
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 		<script type="text/javascript" src="{{asset('js')}}/app.js"></script>

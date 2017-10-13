@@ -11,7 +11,7 @@
 				<div class="modal-footer">
 					{!! Form::open(array('route'=>array('articles.destroy', $article->id), 'method'=>'delete' )) !!}
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					{!! Form::submit('Save Changes', array('class'=>"btn btn-danger")) !!}
+					{!! Form::submit('Confirm', array('class'=>"btn btn-danger")) !!}
 					{!! Form::close() !!}
 				</div>
 			</div>

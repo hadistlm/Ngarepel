@@ -2,8 +2,8 @@
 @section("content")
 	<div class="row">
 		<div class="col-md-11">
-			<h2 class="pull-left"> List Articles </h2>	
-			{{ link_to(route("articles.create"),"Add Data", ["class"=>"pull-right btn btn-primary"]) }}
+			<h2 class="pull-left"> List Articles </h2>
+			<a class="pull-right" href="{{ route('articles.create') }}"><i class="btn pe-7s-plus pe-4x pe-va green"></i></a> 
 		</div>
 	</div>
 

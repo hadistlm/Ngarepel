@@ -1,0 +1,32 @@
+a:hover{
+	text-decoration: none;
+}
+blockquote{
+	border-left: 5px solid #dbcfcf;
+}
+
+.img-circle{
+	border: 5px solid #646464;
+}
+.green{
+	color: #2ab27b;
+}
+.green:hover{
+	color: #198a5d;
+}
+
+.btn{
+	border-radius: 0px;
+}
+.btn-info{
+	border-bottom: 3px solid #679fc0;
+}
+.btn-default{
+	border-bottom: 3px solid #929da3;
+}
+.btn-danger{
+	border-bottom: 3px solid #903714;
+}
+.btn-success{
+	border-bottom: 3px solid #0f7e50;
+}
