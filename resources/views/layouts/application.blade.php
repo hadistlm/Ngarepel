@@ -20,7 +20,7 @@
 				@include('shared.left_nav')
 
 				<div id="main-content" class="col-xs-12 col-sm-9">
-					<div class="panel-body">
+					<div class="panel-body col-md-11">
 						@if(Session::has('error'))
 							<div class="alert alert-danger">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -34,6 +34,8 @@
 								{{Session::get('notice')}}
 							</div>
 						@endif
+					</div>
+					<div class="col-md-11">
 						@yield("content")
 					</div>
 				</div>
