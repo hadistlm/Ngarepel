@@ -20,22 +20,25 @@
 				@include('shared.left_nav')
 
 				<div id="main-content" class="col-xs-12 col-sm-9">
-					<div class="panel-body col-md-11">
-						@if(Session::has('error'))
+					@if(Session::has('error'))
+						<div class="panel-body col-md-11">
 							<div class="alert alert-danger">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								{{Session::get('error')}}
 							</div>
-						@endif
+						</div>
+					@endif
 
-						@if(Session::has('notice'))
+					@if(Session::has('notice'))
+						<div class="panel-body col-md-11">	
 							<div class="alert alert-success">
 								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 								{{Session::get('notice')}}
 							</div>
-						@endif
-					</div>
-					<div class="col-md-11">
+						</div>
+					@endif
+					
+					<div class="col-md-12">
 						@yield("content")
 					</div>
 				</div>

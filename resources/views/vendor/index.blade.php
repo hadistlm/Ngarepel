@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-md-11">
 			<h2 class="pull-left"> List Articles </h2>
-			<a class="pull-right" href="{{ route('articles.create') }}"><i class="btn pe-7s-plus pe-4x pe-va green"></i></a> 
+			<a class="pull-right" href="{{ route('articles.create') }}"><i class="pe-7s-plus pe-4x pe-va green"></i></a> 
 		</div>
 	</div>
 

@@ -1,6 +1,6 @@
 @foreach ($articles as $data)
 	<article class="row">
-		<h1><a href="{{ route('articles.show', $data->id) }}"><i class="pe-7s-angle-right"></i></a> {{ $data->title }}</h1>
+		<h1><a href="{{ route('articles.show', $data->id) }}"><i class="pe-7s-angle-right"></i></a>{{ $data->title }}</h1>
 		<blockquote class="text-justify">
 			&emsp;{{ str_limit($data->content, 250) }}
 		</blockquote>

@@ -17,6 +17,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $article = Article::All();
+
         return view('vendor.index')->with('articles', $article);
     }
 

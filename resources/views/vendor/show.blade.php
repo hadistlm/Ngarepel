@@ -3,7 +3,9 @@
 	<article class="row">
 		<div class="col-md-11">
 			<h2> {{ $article->title }} </h2>
-			<p class="text-justify"> &emsp;{{ $article->content }} </p>
+			<div class="well">
+				<p class="text-justify"> &emsp;{{ $article->content }} </p>
+			</div>
 		</div>
 	</article>
 
