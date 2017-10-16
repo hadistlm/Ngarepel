@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthorToArticles extends Migration
+class RenameAuthorInArticles extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddAuthorToArticles extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->string("author")->after("id");
+            $table->renameColumn("author", "writer")
         });
     }
 
@@ -26,7 +26,7 @@ class AddAuthorToArticles extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->dropColumn('author');
+            $table->renameColumn("writer", "author");
         });
     }
 }
