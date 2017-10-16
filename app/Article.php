@@ -8,7 +8,24 @@ class Article extends Model
 {
 	protected $table = 'articles';
     protected $fillable = [
-        'title','content','created_at','updated_at'
+        'title','content','writer'
     ];
+
+    public function valid()
+    {
+    	return array(
+    		'content'=>'required'
+    	);
+    }
+
+    public function comments()
+    {
+    	return $this->hasMany('App\Comment', 'article_id');
+    }
+
+    public function photos()
+    {
+        return $this->hasMany('App\Photo', 'article_id');
+    }
 }
 

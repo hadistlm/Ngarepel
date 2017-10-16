@@ -1,3 +1,4 @@
+{!! Form::hidden('writer', "Admin", ['class'=>'hidden']) !!}
 <div class="form-group">
 	{!! Form::label('title', 'Title', array('class' => 'col-lg-2 control-label')) !!}
 	<div class="col-lg-9">
@@ -14,6 +15,13 @@
 		<div class="text-danger">{{ $errors->first('content') }}</div>
 	</div>
 	<div class="clear"></div>
+</div>
+
+<div class="form-group">
+	{!! Form::label('file', "File", ['class'=>'col-md-2 control-label']) !!}
+	<div class="col-md-9">
+		{!! Form::file('file[]', ['multiple']) !!}
+	</div>
 </div>
 
 <div class="form-group">

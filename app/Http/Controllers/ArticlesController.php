@@ -54,8 +54,11 @@ class ArticlesController extends Controller
     public function show($id)
     {
         $article = Article::find($id);
+        $comments = Article::find($id)->comments->sortBy('Comment.created_at');
 
-        return view("vendor.show")->with("article", $article);
+        return view("vendor.show")
+            ->with("article", $article)
+            ->with("comments", $comments);
     }
 
     /**

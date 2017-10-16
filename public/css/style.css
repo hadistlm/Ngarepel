@@ -4,14 +4,27 @@ a:hover{
 blockquote{
 	border-left: 5px solid #dbcfcf;
 }
-
+.marg{ margin-top: 10px;}
+.margi{ margin-bottom: 30px; }
 .img-circle{
 	border: 5px solid #646464;
+}
+.red{
+	color: #bf5329;;
+}
+.red:hover, .red:focus{
+	color: #9b3006;
+}
+.ocean{
+	color: #8eb4cb;
+}
+.ocean:hover, .ocean:focus{
+	color: #7398ae;
 }
 .green{
 	color: #2ab27b;
 }
-.green:hover{
+.green:hover, .green:focus{
 	color: #198a5d;
 }
 
@@ -29,4 +42,10 @@ blockquote{
 }
 .btn-success{
 	border-bottom: 3px solid #0f7e50;
+}
+.borderv1{
+	background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+	padding:28px;
 }

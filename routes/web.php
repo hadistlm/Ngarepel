@@ -20,3 +20,4 @@ Route::get('/home', 'HomeController@index');
 Route::get('/test', function(){ return view('new');});
 
 Route::resource('/articles', 'ArticlesController');
+Route::resource('/comments', 'CommentsController');
