@@ -21,3 +21,5 @@ Route::get('/test', function(){ return view('new');});
 
 Route::resource('/articles', 'ArticlesController');
 Route::resource('/comments', 'CommentsController');
+Route::put('/change-images/{id}', 'ImagesController@changeImage')->name('change');
+Route::delete('/delete-images/{id}', 'ImagesController@deleteImage')->name('delete');

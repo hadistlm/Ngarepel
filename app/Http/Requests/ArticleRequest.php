@@ -26,7 +26,9 @@ class ArticleRequest extends FormRequest
         $id = $this->article;
         return [
             'title' => "required|unique:articles,title|max:255",
-            'content' => "required|unique:articles,content|min:50"
+            'content' => "required|min:10",
+            'file' => "max:2048|array",
+            'file.*' => "image|mimes:jpg,jpeg,png,gif"
         ];
     }
 
@@ -35,7 +37,9 @@ class ArticleRequest extends FormRequest
         return[
             'title.required' => "Title is required, Please fill in the blank",
             'title.unique' => "There are same Title in the database",
-            'content.required' => "Content is required"
+            'content.required' => "Content is required",
+            'content.min' => "Content Must Contain at least 10 character",
+            'file' => "Only Image Extension Allowed"
         ];
     }
 }

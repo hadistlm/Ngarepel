@@ -17,12 +17,15 @@
 	<div class="clear"></div>
 </div>
 
-<div class="form-group">
-	{!! Form::label('file', "File", ['class'=>'col-md-2 control-label']) !!}
-	<div class="col-md-9">
-		{!! Form::file('file[]', ['multiple']) !!}
-	</div>
-</div>
+@if($create)
+	<div class="form-group">
+		{!! Form::label('file', "File", ['class'=>'col-md-2 control-label']) !!}
+		<div class="col-md-9">
+			{!! Form::file('file[]', ['multiple'=>'multiple']) !!}
+			<div class="text-danger">{{ $errors->first('file') }}</div>
+		</div>
+	</div> 
+@endif
 
 <div class="form-group">
 	<div class="col-lg-2"></div>

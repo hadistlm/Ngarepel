@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Article;
+use App\Article, App\Photo;
 use App\Http\Requests\ArticleRequest;
 use Session;
+use Storage;
 
 class ArticlesController extends Controller
 {
@@ -40,9 +41,27 @@ class ArticlesController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        Article::create($request->all());
-        Session::flash("notice", "Articles Success Created");
-        return redirect()->route("articles.index");
+        try {
+
+            $article = Article::create($request->all());
+
+            if ($request->hasFile('file')) {
+                foreach ($request->file as $data) {
+                    $num = "file_".str_random(6). '.' . $data->extension();
+                    $data->storeAs('public/article_photos', $num);
+                    Photo::create([
+                        'article_id' =>  $article->id,
+                        'file' => $num
+                    ]);
+                }
+            }
+            
+            Session::flash("notice", "Articles Success Created");
+            return redirect()->route("articles.index");
+        } catch (Exception $e) {
+            Session::flash("error", $e);
+            return redirect()->route("articles.create");
+        }
     }
 
     /**
@@ -55,10 +74,18 @@ class ArticlesController extends Controller
     {
         $article = Article::find($id);
         $comments = Article::find($id)->comments->sortBy('Comment.created_at');
+        $photos = Article::find($id)->photos->sortBy('Photo.created_at');
+        $create = true;
+        $i = 0;
+        $j = 0;
 
         return view("vendor.show")
             ->with("article", $article)
-            ->with("comments", $comments);
+            ->with("comments", $comments)
+            ->with("photos", $photos)
+            ->with('create', $create)
+            ->with("i", $i)
+            ->with("j", $j);
     }
 
     /**
@@ -70,9 +97,10 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         $article = Article::find($id);
+        $photos = Article::find($id)->photos->sortBy('Photo.created_at');
         $create = false;
 
-        return view("vendor.edit", compact('article','create'));
+        return view("vendor.edit", compact('article','create','photos'));
     }
 
     /**
@@ -97,9 +125,23 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        Article::destroy($id);
-        Session::flash('notice', "Article Success Deleted");
-        return redirect()->route("articles.index");
+        try {
+            $data = \App\Photo::where('article_id', $id)->get();
+
+            if(!empty($data)){
+                foreach ($data as $key) {
+                    Storage::delete('public/article_photos/'.$key->file);
+                }
+                Photo::where('article_id', $id)->delete();
+            }
+
+            Article::destroy($id);
+            Session::flash('notice', "Article Success Deleted");
+            return redirect()->route("articles.index");
+        } catch (Exception $e) {
+            Session::flash('error', $e);
+            return redirect()->route("articles.index");
+        }
+        
     }
 }
-
