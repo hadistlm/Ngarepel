@@ -8,9 +8,11 @@
 
 		<title>Laravel 5</title>
 		<link href="{{asset('css')}}/app.css" rel="stylesheet">
+		<link href="{{asset('css')}}/style.css" rel="stylesheet">
 		<link href="{{asset('css')}}/helper.css" rel="stylesheet">
 		<link href="{{asset('css')}}/pe-icon-7-stroke.css" rel="stylesheet">
-		<link href="{{asset('css')}}/style.css" rel="stylesheet">
+
+		<link href="{{asset('plugins')}}/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet">
 	</head>
 	<body>
 		@include('shared.head_nav')
@@ -47,8 +49,6 @@
 		</div>
 		<script type="text/javascript" src="{{asset('js')}}/app.js"></script>
 		<script type="text/javascript" src="{{asset('js')}}/jquery-3.2.1.min.js"></script>
-		<script src="/assets/js/material-design/material.js"></script>
-		<script src="/assets/js/material-design/ripples.js"></script>
-		<script src="/assets/js/custom/layout.js"></script>
+		<script type="text/javascript" src="{{asset('plugins')}}/bootstrap-fileinput/js/fileinput.min.js"></script>
 	</body>
 </html>

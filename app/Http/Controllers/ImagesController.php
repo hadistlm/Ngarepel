@@ -7,7 +7,30 @@ use App\Article, App\Photo;
 use Session, Storage;
 
 class ImagesController extends Controller
-{
+{   
+    public function addImage(Request $request, $id)
+    {
+        try {
+            if ($request->hasFile('file')) {
+                foreach ($request->file as $data) {
+                    $num = "file_".str_random(6). '.' . $data->extension();
+                    $data->storeAs('public/article_photos', $num);
+                    Photo::create([
+                        'article_id' =>  $id,
+                        'file' => $num
+                    ]);
+                }
+                Session::flash("notice", "Upload new image success");
+            }else{
+                Session::flash('error', "Gagal");
+            }
+            return redirect()->back();
+        } catch (Exception $e) {
+            Session::flash('error', $e);
+            return redirect()->back();
+        }
+    }
+
     public function changeImage(Request $request, $id)
     {
     	try {
@@ -51,6 +74,5 @@ class ImagesController extends Controller
             Session::flash('error', $e);
             return redirect()->back();
         }
-        
     }
 }

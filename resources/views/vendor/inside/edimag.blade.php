@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-11">
 	@foreach ($photos as $element)
-		<div class="col-md-4 marg border">
+		<div class="col-md-4 col-xs-12 col-sm-6 border">
 			<img src="{{ asset('storage') }}/article_photos/{{ $element->file }}" class="img-responsive img-rounded" alt="Image">
 			<center><strong> {{ $element->file }}</strong></center>
 			{!! Form::open(['route'=>['change',$element->id], 'files'=>'true', 'class'=>'form-horizontal']) !!}

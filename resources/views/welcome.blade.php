@@ -5,10 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Ngarepel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        
+        <link href="/css/app.css" rel="stylesheet">
+        <link href="{{asset('plugins')}}/toastr/toastr.min.css" rel="stylesheet">
+
 
         <!-- Styles -->
         <style>
@@ -87,9 +91,39 @@
                 <div class="links text-center">
                     <a href="{{ url('/articles') }}"> Articles </a>
                     <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
+                    <a href="{{ url('/signup') }}">Register</a>
                 </div>
             </div>
         </div>
+
+         <!-- Scripts -->
+    <script src="/js/app.js"></script>
+    <script type="text/javascript" src="{{asset('js')}}/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{{asset('plugins')}}/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+
+            @if(Session::has('notice'))
+                toastr["success"]("{{Session::get('notice')}}", "Success")
+            @endif
+        });
+    </script>
     </body>
 </html>

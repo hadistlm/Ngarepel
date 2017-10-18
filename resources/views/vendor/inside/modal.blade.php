@@ -1,8 +1,8 @@
-	@if ($create == true)
-		<div class="modal fade" id="modal-id">
-	@else
-		<div class="modal fade" id="{{ $element->id }}">
-	@endif
+@if ($create == true)
+	<div class="modal fade" id="modal-id">
+@else
+	<div class="modal fade" id="{{ $element->id }}">
+@endif
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
