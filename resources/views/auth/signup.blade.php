@@ -38,7 +38,7 @@
                 	<div class="form-group">
                 		{!! Form::label('email', "Email", ['class'=>'col-md-4 control-label']) !!}
                 		<div class="col-md-6">
-                			{!! Form::text('email', null, ['class'=>'form-control']) !!}
+                            {!! Form::email('email', null, ['class'=>'form-control']) !!}
                 			<div class="text-danger">{{ $errors->first('email') }}</div>
                 		</div>
                 		<div class="clear"></div>

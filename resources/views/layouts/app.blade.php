@@ -8,11 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Ngarepel</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
     <link href="{{asset('plugins')}}/toastr/toastr.min.css" rel="stylesheet">
+    <link href="{{asset('plugins')}}/iCheck/skins/square/grey.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -86,12 +87,9 @@
     <script src="/js/app.js"></script>
     <script type="text/javascript" src="{{asset('js')}}/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="{{asset('plugins')}}/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="{{asset('plugins')}}/iCheck/js/icheck.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            @if(Session::has('notice'))
-                toastr["success"]("Please Login To Start Your session", "Success")
-            @endif
-
             toastr.options = {
               "closeButton": true,
               "debug": false,
@@ -109,6 +107,24 @@
               "showMethod": "fadeIn",
               "hideMethod": "fadeOut"
             }
+            $('.check').iCheck({
+                checkboxClass: 'icheckbox_square-grey',
+                radioClass: 'iradio_square-grey',
+                increaseArea: '20%'
+            });
+
+
+            @if(Session::has('notice'))
+                toastr["success"]("{{Session::get('notice')}}", "Success")
+            @endif
+
+            @if(Session::has('error'))
+                toastr["error"]("{{Session::get('error')}}", "Failed")
+            @endif
+
+            @if(Session::has('warning'))
+                toastr["warning"]("{{Session::get('warning')}}", "Warning!")
+            @endif
         });
     </script>
 </body>

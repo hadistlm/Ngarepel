@@ -24,10 +24,10 @@ class UsersController extends Controller
 
     	try {
     		Sentinel::registerAndActivate($input);
-			Session::flash('notice', 'Success create new user');	
+			Session::flash('notice', 'Please Login To Start Your session');	
     		return redirect('/');
     	} catch (Exception $e) {
-    		Session::flash('errors', 'Success create new user');	
+    		Session::flash('errors', $e);	
     		return redirect()->back();
     	}
     }

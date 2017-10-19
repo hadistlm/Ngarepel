@@ -23,7 +23,6 @@ class ArticleRequest extends FormRequest
      */
     public function rules()
     {
-        $id = $this->article;
         return [
             'title' => "required|unique:articles,title|max:255",
             'content' => "required|min:10",

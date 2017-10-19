@@ -11,6 +11,7 @@
 		<link href="{{asset('css')}}/style.css" rel="stylesheet">
 		<link href="{{asset('css')}}/helper.css" rel="stylesheet">
 		<link href="{{asset('css')}}/pe-icon-7-stroke.css" rel="stylesheet">
+		<link href="{{asset('plugins')}}/toastr/toastr.min.css" rel="stylesheet">
 
 		<link href="{{asset('plugins')}}/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet">
 	</head>
@@ -50,5 +51,31 @@
 		<script type="text/javascript" src="{{asset('js')}}/app.js"></script>
 		<script type="text/javascript" src="{{asset('js')}}/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="{{asset('plugins')}}/bootstrap-fileinput/js/fileinput.min.js"></script>
+		<script type="text/javascript" src="{{asset('plugins')}}/toastr/toastr.min.js"></script>
+		<script type="text/javascript">
+        $(document).ready(function(){
+            toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+
+            @if(Session::has('logged'))
+                toastr["success"]("{{Session::get('logged')}}", "Logged In")
+            @endif
+        });
+    </script>
 	</body>
 </html>

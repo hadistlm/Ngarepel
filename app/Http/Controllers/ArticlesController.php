@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Article, App\Photo;
 use App\Http\Requests\ArticleRequest;
-use Session;
-use Storage;
+use App\Article, App\Photo;
+use Session, Storage;
 
 class ArticlesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('sentinel');
+    }
+
     /**
      * Display a listing of the resource.
      *

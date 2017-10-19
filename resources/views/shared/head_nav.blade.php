@@ -13,18 +13,20 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
+				@if (Sentinel::check())
 				<li><a href="{{ url('/') }}">Home</a></li>
 				<li><a>Profile</a></li>
 				<li><a href="{{ url('/articles') }}">Article</a></li>
 				<li class="dropdown">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+					<a href="" class="dropdown-toggle" data-toggle="dropdown">{{ Sentinel::getUser()->first_name }} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li><a href="#">Separated link</a></li>
+						<li><a href="{{ route('logout') }}">Logout</a></li>
 					</ul>
 				</li>
+				@else
+					<li><a href="{{ url('/login') }}">Login</a></li>
+                    <li><a href="{{ url('/signup') }}">Register</a></li>
+				@endif
 			</ul>
 		</div><!-- /.navbar-collapse -->
 	</div>
