@@ -16,37 +16,42 @@
 			<div class="row"> 
 				<div class="well">
 					<p class="text-justify"> &emsp;{{ $article->content }} </p>
-					<div id="carousel-id" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							@foreach ($photos as $element)
-								@if ($j == 0)
-									<li data-target="#carousel-id" data-slide-to="$i" class="active"></li>
-								@else
-									<li data-target="#carousel-id" data-slide-to="$i" class=""></li>
-								@endif
-								@php
-									$j++
-								@endphp
-							@endforeach
-						</ol>
 
-						<div class="carousel-inner">
-							@foreach ($photos as $data)
-							@if ($i == 0)
-								<div class="item active">
-							@else
-								<div class="item">
-							@endif
-								<img src="{{ asset('storage') }}/article_photos/{{ $data->file }}" class="img-responsive" alt="Image">
+					@if (count($photos) > 0)
+						<div id="carousel-id" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								@foreach ($photos as $element)
+									@if ($j == 0)
+										<li data-target="#carousel-id" data-slide-to="$i" class="active"></li>
+									@else
+										<li data-target="#carousel-id" data-slide-to="$i" class=""></li>
+									@endif
+									@php
+										$j++
+									@endphp
+								@endforeach
+							</ol>
+
+							<div class="carousel-inner">
+								@foreach ($photos as $data)
+								@if ($i == 0)
+									<div class="item active">
+								@else
+									<div class="item">
+								@endif
+										<img src="{{ asset('storage') }}/article_photos/{{ $data->file }}" class="img-responsive" alt="Image">
+									</div>
+								@php
+									$i++
+								@endphp
+								@endforeach
 							</div>
-							@php
-								$i++
-							@endphp
-							@endforeach
+							<a class="left carousel-control" href="#carousel-id" data-slide="prev"><i class="pe-7s-angle-left pe-3x pe-va"></i></a>
+							<a class="right carousel-control" href="#carousel-id" data-slide="next"><i class="pe-7s-angle-right pe-3x pe-va"></i></a>
 						</div>
-						<a class="left carousel-control" href="#carousel-id" data-slide="prev"><i class="pe-7s-angle-left pe-3x pe-va"></i></a>
-						<a class="right carousel-control" href="#carousel-id" data-slide="next"><i class="pe-7s-angle-right pe-3x pe-va"></i></a>
-					</div>
+					@endif
+
+					<p class="pull-left">Posted By <strong>{{ $article->writer }}</strong> On {{ $article->created_at->format('D, d M Y') }}</p>
 				</div>
 			</div>
 		</div>

@@ -21,9 +21,12 @@ class UsersController extends Controller
     		'email' => $request->email,
     		'password' => $request->password
     	];
+        $writerrole = Sentinel::findRoleByName('Writer');
 
     	try {
-    		Sentinel::registerAndActivate($input);
+    		$added = Sentinel::registerAndActivate($input);
+            $added->roles()->attach($writerrole);
+
 			Session::flash('notice', 'Please Login To Start Your session');	
     		return redirect('/');
     	} catch (Exception $e) {

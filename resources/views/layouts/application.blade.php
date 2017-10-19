@@ -75,6 +75,10 @@
             @if(Session::has('logged'))
                 toastr["success"]("{{Session::get('logged')}}", "Logged In")
             @endif
+
+            @if(Session::has('warning'))
+                toastr["warning"]("{{Session::get('warning')}}", "Warning!")
+            @endif
         });
     </script>
 	</body>

@@ -8,6 +8,11 @@ use Session, Storage;
 
 class ImagesController extends Controller
 {   
+    function __construct()
+    {
+        $this->middleware('sentinel');
+    }
+
     public function addImage(Request $request, $id)
     {
         try {
@@ -22,7 +27,7 @@ class ImagesController extends Controller
                 }
                 Session::flash("notice", "Upload new image success");
             }else{
-                Session::flash('error', "Gagal");
+                Session::flash('error', "Failed to upload new image");
             }
             return redirect()->back();
         } catch (Exception $e) {
@@ -46,7 +51,7 @@ class ImagesController extends Controller
 	            
         		Session::flash('notice', "Success Update Image");
         	}else{
-        		Session::flash('error', "Failed Change Image");	
+        		Session::flash('warning', "There's nothing to change");	
         	}
         	return redirect()->back();
     	} catch (Exception $e) {

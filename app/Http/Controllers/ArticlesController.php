@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use App\Article, App\Photo;
-use Session, Storage;
+use Session, Storage, Sentinel;
 
 class ArticlesController extends Controller
 {
     function __construct()
     {
         $this->middleware('sentinel');
+        $this->middleware('sentinel.role');
     }
 
     /**
@@ -34,7 +35,9 @@ class ArticlesController extends Controller
     public function create()
     {
         $create = true;
-        return view("vendor.create")->with('create', $create);
+        $writer = Sentinel::check();
+
+        return view("vendor.create", compact('writer','create'));
     }
 
     /**
@@ -46,7 +49,6 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
         try {
-
             $article = Article::create($request->all());
 
             if ($request->hasFile('file')) {
@@ -102,9 +104,10 @@ class ArticlesController extends Controller
     {
         $article = Article::find($id);
         $photos = Article::find($id)->photos->sortBy('Photo.created_at');
+        $writer = Sentinel::check();
         $create = false;
 
-        return view("vendor.edit", compact('article','create','photos'));
+        return view("vendor.edit", compact('article','create','photos', 'writer'));
     }
 
     /**
@@ -116,7 +119,7 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Article::find($id)->update($request->all());
+        Article::find($id)->update(array('title'=>$request->title, 'content'=>$request->content));
         Session::flash("notice", "Article Success Updated");
         return redirect()->route("articles.show", $id);
     }

@@ -1,4 +1,4 @@
-{!! Form::hidden('writer', "Admin", ['class'=>'hidden']) !!}
+{!! Form::hidden('writer', $writer->first_name, ['class'=>'hidden']) !!}
 <div class="form-group">
 	{!! Form::label('title', 'Title', array('class' => 'col-lg-2 control-label')) !!}
 	<div class="col-lg-9">
