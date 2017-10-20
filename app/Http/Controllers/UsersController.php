@@ -30,7 +30,7 @@ class UsersController extends Controller
 			Session::flash('notice', 'Please Login To Start Your session');	
     		return redirect('/');
     	} catch (Exception $e) {
-    		Session::flash('errors', $e);	
+    		Session::flash('error', $e);	
     		return redirect()->back();
     	}
     }

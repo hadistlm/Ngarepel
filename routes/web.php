@@ -26,7 +26,7 @@ Route::get('login', 'SessionsController@login')->name('login');
 Route::get('logout', 'SessionsController@logout')->name('logout');
 Route::post('login', 'SessionsController@loginStore')->name('login.store');
 
-//Routes SMTP //errors
+//Routes SMTP
 Route::get('forgot-password', 'RemindersController@create')->name('reminders.create');
 Route::post('forgot-password', 'RemindersController@store')->name('reminders.store');
 Route::get('reset-password/{id}/{token}', 'RemindersController@edit')->name('reminders.edit');

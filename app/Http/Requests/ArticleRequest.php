@@ -26,8 +26,8 @@ class ArticleRequest extends FormRequest
         return [
             'title' => "required|unique:articles,title|max:255",
             'content' => "required|min:10",
-            'file' => "image|max:2048|array",
-            'file.*' => "image|mimes:jpg,jpeg,png,gif"
+            'file.*' => "image|mimes:jpg,jpeg,png,gif",
+            'file' => "max:2048|array",
         ];
     }
 
@@ -38,7 +38,7 @@ class ArticleRequest extends FormRequest
             'title.unique' => "There are same Title in the database",
             'content.required' => "Content is required",
             'content.min' => "Content Must Contain at least 10 character",
-            'file.image' => "Only Image files are allowed"
+            'file.*' => "Only Image files are allowed"
         ];
     }
 }

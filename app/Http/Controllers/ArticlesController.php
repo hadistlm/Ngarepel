@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use App\Article, App\Photo;
-use Session, Storage, Sentinel;
+use Session, Storage, Sentinel, Validator;
 
 class ArticlesController extends Controller
 {

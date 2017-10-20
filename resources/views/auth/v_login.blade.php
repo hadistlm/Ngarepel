@@ -29,7 +29,7 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <input type="checkbox" class="nilai check" name="remember" data-toggle="checkbox" > Remember Me!
+                            <input type="checkbox" name="remember" class="check"> Remember Me!
                         </div>
                         <div class="clear"></div>
                     </div>

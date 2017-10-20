@@ -22,7 +22,9 @@
 		{!! Form::label('file', "File", ['class'=>'col-md-2 control-label']) !!}
 		<div class="col-md-9">
 			{!! Form::file('file[]', ['multiple'=>'multiple']) !!}
-			<div class="text-danger">{{ $errors->first('file') }}</div>
+			@foreach ($errors->get('file.*') as $element)
+				<div class="text-danger"> {{ $element[0] }} </div>
+			@endforeach
 		</div>
 	</div> 
 @endif
