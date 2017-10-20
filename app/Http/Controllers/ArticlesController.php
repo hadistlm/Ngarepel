@@ -22,7 +22,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $article = Article::All();
+        $article = Article::paginate(5);
 
         return view('vendor.index')->with('articles', $article);
     }
