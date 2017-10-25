@@ -8,7 +8,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-11">
+		<div class="col-md-11" id="articles-list">
 			@include('vendor.list')
 		</div>
 	</div>

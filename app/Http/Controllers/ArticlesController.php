@@ -20,11 +20,25 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $article = Article::paginate(5);
+        if ($request->ajax()) {
+            $articles = Article::where('title', 'like', '%'.$request->keywords.'%')->orWhere('content', 'like', '%'.$request->keywords.'%');
+            if ($request->direction) {
+                $articles = $articles->orderBy('id', $request->direction);
+            }
+            
+            $articles = $articles->paginate(5);
+            $request->direction == 'asc' ? $direction = 'desc' : $direction = 'asc';
+            $request->keywords == '' ? $keywords = '' : $keywords = $request->keywords;
 
-        return view('vendor.index')->with('articles', $article);
+            $view = (String) view('vendor.list')->with('articles', $articles)->render();
+            return response()->json(['view' => $view, 'direction' => $direction, 'keywords'=>$keywords, 'status'=>'success']);
+        }else{
+            $article = Article::paginate(5);
+
+            return view('vendor.index')->with('articles', $article);   
+        }
     }
 
     /**
