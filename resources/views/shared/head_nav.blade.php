@@ -14,15 +14,15 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				@if (Sentinel::check())
-				<li><a href="{{ url('/') }}">Home</a></li>
-				<li><a>Profile</a></li>
-				<li><a href="{{ url('/articles') }}">Article</a></li>
-				<li class="dropdown">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown">{{ Sentinel::getUser()->first_name }} <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="{{ route('logout') }}">Logout</a></li>
-					</ul>
-				</li>
+					<li><a href="{{ url('/') }}">Home</a></li>
+					<li><a>Profile</a></li>
+					<li><a href="{{ url('/articles') }}">Article</a></li>
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown">{{ Sentinel::getUser()->first_name }} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{{ route('logout') }}">Logout</a></li>
+						</ul>
+					</li>
 				@else
 					<li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/signup') }}">Register</a></li>
