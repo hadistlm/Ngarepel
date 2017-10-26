@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+
+//Routes to task manager
+Route::get('tasks', 'TaskController@index');
+Route::get('tasks/{id}', 'TaskController@show');
+Route::delete('tasks/{id}', 'TaskController@delete');
+Route::put('tasks', 'TaskController@store');
+Route::post('tasks', 'TaskController@store');
