@@ -23,8 +23,8 @@ class CommentsController extends Controller
             if ($validate->fails()){
                 return response()->json(['view'=>$view, 'status'=>'fails']);
             }else{
-                Comment::create($request->all());
-                return response()->json(['view'=>$view, 'status'=>'success']);
+                $isi = Comment::create($request->all());
+                return response()->json(['view'=>$view, 'isi'=>$isi ,'status'=>'success']);
             }
             /*
             $validate = Validator::make($request->all(), Comment::valid());

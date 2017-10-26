@@ -203,7 +203,13 @@
 				success : function(data){
 					if (data.status == 'success') {
 						toastr["success"]("Success added new comment", "Commented");
-						$('#allcom').html(data['view']);
+			
+						var head = '<div class="row"><div class="col-md-12"><div class="col-md-2"><center><img src="http://localhost:8000/image/463230.jpg" class="img-responsive img-rounded" alt="Image"><strong>- '+data.isi['user']+' -</strong></center></div>';
+						var body = '<div class="col-md-9 borderv1"><p class="text-justify">'+ data.isi['content'] +'</p><i class="pull-right">'+data.isi['created_at']+'</i></div>';
+						var footer = '</div></div><hr class="col-md-8 col-md-offset-1">';
+
+						$('#allcom').append(head+body+footer);
+						$("#emp").addClass("hidden");
 					}else{
 						toastr["error"]("Failed to add new comment", "Failed")
 					}

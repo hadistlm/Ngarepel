@@ -15,7 +15,7 @@
 	<hr class="col-md-8 col-md-offset-1">
 	@endforeach
 @else
-	<div class="col-md-11">
+	<div class="col-md-11" id="emp">
 		<h5 class="text-center borderv1"> No Comments Recorded</h5>
 	</div>
 @endif

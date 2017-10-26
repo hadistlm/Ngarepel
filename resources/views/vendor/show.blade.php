@@ -59,9 +59,8 @@
 
 	<div class="row">
 		<h3><a href="#comen" data-toggle="collapse" data-target="#comen"><i class="pe-7s-comment pe-2x pe-va"></i>&emsp;Add Comment</a></h3>
-		<div id="allcom">
-			@include('vendor.inside.comlist')
-		</div>
+		@include('vendor.inside.comlist')
+		<div id="allcom"></div>
 	</div>
 
 	<div class="row">
