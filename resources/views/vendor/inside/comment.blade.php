@@ -1,4 +1,4 @@
-			{!! Form::open(['route' => 'comments.store', 'class' => 'form-horizontal', 'role' => 'form']) !!}
+			{!! Form::open(['class' => 'form-horizontal', 'id' => 'form-com']) !!}
 			{!! Form::hidden('article_id', $article->id, ['class'=>'hidden']) !!}
 				
 

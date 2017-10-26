@@ -8,6 +8,17 @@
 	</div>
 
 	<div class="row">
+		<div class="col-md-3 col-xs-3">
+			<p>Sort articles by : <a id="id">ID &nbsp;<i id="ic-direction"></i></a></p>	
+		</div>
+		<div class="col-md-8 col-xs-9">
+			<div class="form-group">
+				<input type="text" class="form-control" id="keywords" placeholder="Type article keywords">	
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
 		<div class="col-md-11" id="articles-list">
 			@include('vendor.list')
 		</div>

@@ -16,7 +16,7 @@
 				@if (Sentinel::check())
 					<li><a href="{{ url('/') }}">Home</a></li>
 					<li><a>Profile</a></li>
-					<li><a href="{{ url('/articles') }}">Article</a></li>
+					<li><a href="{{ url('articles') }}">Article</a></li>
 					<li class="dropdown">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">{{ Sentinel::getUser()->first_name }} <b class="caret"></b></a>
 						<ul class="dropdown-menu">

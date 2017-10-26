@@ -40,23 +40,6 @@
 							</div>
 						</div>
 					@endif
-
-					<div class="row">
-						<div class="col-md-9 col-xs-9">
-							<div class="form-group">
-								<input type="text" class="form-control" id="keywords" placeholder="Type article keywords">	
-							</div>
-						</div>
-						<div class="col-md-2 col-xs-3">
-							<button id="search" class="btn btn-block btn-info" type="button">Search</button>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-md-5">
-							<p>Sort articles by : <a id="id">ID &nbsp;<i id="ic-direction"></i></a></p>	
-						</div>
-					</div>
 					
 					<div id="data-content" class="col-md-12">
 						@yield("content")
@@ -117,7 +100,7 @@
 
     <script type="text/javascript">
     	$(document).ready(function(){
-    		$(document).on('click', '.pagination a', function(e){
+    		$(document).on('keyup', '.pagination a', function(e){
     			get_page($(this).attr('href').split('page=')[1]);
     			e.preventDefault();
     		});
@@ -157,7 +140,7 @@
 					'direction' : $('#direction').val()
 				},
 				success : function(data) {
-					$('#data-content').html(data['view']);
+					$('#articles-list').html(data['view']);
 					$('#direction').val(data['direction']);
 				},error : function(xhr, status) {
 					console.log(xhr.error + " ERROR STATUS : " + status);
@@ -186,14 +169,14 @@
 					'keywords' : $('#keywords').val(),
 					'direction' : $('#direction').val()
 				}, success : function(data) {
-					$('#data-content').html(data['view']);
+					$('#articles-list').html(data['view']);
 					$('#keywords').val(data['keywords']);
 					$('#direction').val(data['direction']);
 
 					if(data['direction'] == 'asc') {
-						$('i#ic-direction').attr({class: "fa fa-arrow-up"});
+						$('i#ic-direction').attr({class: "pe-7s-angle-up-circle"});
 					} else {
-						$('i#ic-direction').attr({class: "fa fa-arrow-down"});
+						$('i#ic-direction').attr({class: "pe-7s-angle-down-circle"});
 					}
 				}, error : function(xhr, status, error) {
 					console.log(xhr.error + "\n ERROR STATUS : " + status +"\n" + error);
@@ -202,6 +185,33 @@
 				}
 			});
 		}
+    </script>
+
+    <script type="text/javascript">
+    	$('#form-com').on('submit' ,function(e){
+    		store_comments();
+    		document.getElementById("form-com").reset(); 
+    		e.preventDefault();
+    	});
+
+    	function store_comments(){
+    		$.ajax({
+    			url : '/comments',
+				type: "POST",
+				data: $('#form-com').serialize(),
+				dataType : "JSON",
+				success : function(data){
+					if (data.status == 'success') {
+						toastr["success"]("Success added new comment", "Commented");
+						$('#allcom').html(data['view']);
+					}else{
+						toastr["error"]("Failed to add new comment", "Failed")
+					}
+				}, error: function(jqXHR, textStatus, errorThrown){
+					console.log(xhr.error + "\n ERROR STATUS : " + status +"\n" + error);
+				}
+    		});
+    	}
     </script>
 	</body>
 </html>
