@@ -11,7 +11,8 @@
 		"doctrine/dbal": "~2.3",
         "cartalyst/sentinel": "2.0.*",
         "guzzlehttp/guzzle": "~6.0",
-        "ellipsesynergie/api-response": "^0.12.3"
+        "ellipsesynergie/api-response": "^0.12.3",
+        "maatwebsite/excel": "~2.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "v1.4.0",

@@ -6,7 +6,8 @@
 		</blockquote>
 	</article>
 	<div class="row">
-		<div class="col-md-1 col-md-offset-10">
+		<div class="col-md-4 col-md-offset-9">
+			{{ link_to(route('excel.download', $data->id), "Download", ['class'=>'btn btn-success']) }}
 			{{ link_to(route('articles.show', $data->id), 'Read More', ['class'=>'btn btn-info']) }}
 		</div>
 	</div>

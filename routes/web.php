@@ -44,3 +44,7 @@ Route::resource('/comments', 'CommentsController');
 Route::post('/add-images/{id}', 'ImagesController@addImage')->name('add');
 Route::put('/change-images/{id}', 'ImagesController@changeImage')->name('change');
 Route::delete('/delete-images/{id}', 'ImagesController@deleteImage')->name('delete');
+
+//Routes Excel
+Route::get('/excel/download/{id}', 'ExcelsController@export')->name('excel.download');
+Route::post('/excel/export', 'ExcelsController@import')->name('excel.upload');
