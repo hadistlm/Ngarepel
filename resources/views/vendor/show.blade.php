@@ -6,7 +6,7 @@
 				<div class="col-md-12">
 					<h1 class="pull-left">{{ $article->title }}</h1>
 					<h1 class="pull-right">
-						{{ link_to(route('articles.index'), "Back", ['class'=>'btn btn-default']) }}
+						{{ link_to(URL::previous(), "Back", ['class'=>'btn btn-default']) }}
 						{{ link_to(route('articles.edit',$article->id), "Edit", ['class'=>'btn btn-info']) }}
 						<a class="btn btn-danger" data-toggle="modal" href='#modal-id'>Delete</a>
 					</h1>

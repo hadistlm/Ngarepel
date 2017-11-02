@@ -14,6 +14,7 @@
 		<link href="{{asset('plugins')}}/toastr/toastr.min.css" rel="stylesheet">
 
 		<link href="{{asset('plugins')}}/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet">
+		<link href="{{asset('plugins')}}/DataTables-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 	</head>
 	<body>
 		@include('shared.head_nav')
@@ -52,6 +53,8 @@
 		<script type="text/javascript" src="{{asset('js')}}/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="{{asset('plugins')}}/bootstrap-fileinput/js/fileinput.min.js"></script>
 		<script type="text/javascript" src="{{asset('plugins')}}/toastr/toastr.min.js"></script>
+		<script type="text/javascript" src="{{asset('plugins')}}/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+		@stack('script')
 		<script type="text/javascript">
         $(document).ready(function(){
             toastr.options = {
@@ -204,7 +207,7 @@
 					if (data.status == 'success') {
 						toastr["success"]("Success added new comment", "Commented");
 			
-						var head = '<div class="row"><div class="col-md-12"><div class="col-md-2"><center><img src="http://localhost:8000/image/463230.jpg" class="img-responsive img-rounded" alt="Image"><strong>- '+data.isi['user']+' -</strong></center></div>';
+						var head = '<div class="row"><div class="col-md-12"><div class="col-md-2"><center><img src="{{ asset('image')}}/463230.jpg" class="img-responsive img-rounded" alt="Image"><strong>- '+data.isi['user']+' -</strong></center></div>';
 						var body = '<div class="col-md-9 borderv1"><p class="text-justify">'+ data.isi['content'] +'</p><i class="pull-right">'+data.isi['created_at']+'</i></div>';
 						var footer = '</div></div><hr class="col-md-8 col-md-offset-1">';
 

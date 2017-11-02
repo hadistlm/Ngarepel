@@ -170,6 +170,7 @@ return [
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
         //
 
         /*
@@ -234,6 +235,8 @@ return [
         'Reminder' => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel' => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'DataTables' => Yajra\Datatables\DatatablesServiceProvider::class,
+
     ],
 
 ];

@@ -48,3 +48,7 @@ Route::delete('/delete-images/{id}', 'ImagesController@deleteImage')->name('dele
 //Routes Excel
 Route::get('/excel/download/{id}', 'ExcelsController@export')->name('excel.download');
 Route::post('/excel/export', 'ExcelsController@import')->name('excel.upload');
+
+//Routes
+Route::get('data/index', 'DataController@index')->name('data.index');
+Route::get('data/anydata', 'DataController@data')->name('data.anydata');
