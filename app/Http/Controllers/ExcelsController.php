@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ExcelRequest;
 use App\Article;
+use Carbon\Carbon;
 use Excel, Session, DateTime;
 
 class ExcelsController extends Controller
@@ -35,19 +36,31 @@ class ExcelsController extends Controller
     {
     	if ($request->hasFile('excel')) {
     		$file = $request->excel;
+            $ext = $request->excel->getClientOriginalExtension();
 	    	$data = Excel::load($file)->get();
 
 	    	if (!empty($data) && $data->count()) {
 	    		foreach ($data->toArray() as $key => $value) {
 	    			if (!empty($value)) {
-	    				$dt = new DateTime;
-	    				$insert[] = [
-	    					'writer' => $value["writer"],
-	    					'title' => $value["title"], 
-	    					'content' => $value["content"],
-	    					'created_at' => $dt->format('Y-m-d H:i:s'),
-	    					'updated_at' => $dt->format('Y-m-d H:i:s')
-	    				];
+                        if ($ext == 'ods') {
+                            foreach ($value as $val) {
+                                $insert[]=[
+                                    'writer' => $val['writer'],
+                                    'title' => $val['title'], 
+                                    'content' => $val['content'],
+                                    'created_at' => Carbon::now(),
+                                    'updated_at' => Carbon::now()
+                                ];
+                            }
+                        }else{
+    	    				$insert[] = [
+    	    					'writer' => $value['writer'],
+    	    					'title' => $value['title'], 
+    	    					'content' => $value['content'],
+    	    					'created_at' => Carbon::now(),
+    	    					'updated_at' => Carbon::now()
+    	    				];
+                        }
 	    			}
 	    		}
 	    	}

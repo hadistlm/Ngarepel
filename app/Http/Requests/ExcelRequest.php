@@ -26,8 +26,12 @@ class ExcelRequest extends FormRequest
         return [
             'excel' => 'mimeTypes:'.
                 'application/vnd.ms-office,'.
+                'application/vnd.oasis.opendocument.spreadsheet,'.
                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,'.
-                'application/vnd.ms-excel',
+                'application/vnd.ms-excel,'.
+                'text/plain,'.
+                'text/csv,'.
+                'text/tsv',
         ];
     }
 
